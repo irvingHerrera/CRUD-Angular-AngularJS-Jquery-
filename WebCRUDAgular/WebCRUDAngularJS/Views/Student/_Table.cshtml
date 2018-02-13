@@ -1,1 +1,39 @@
-﻿
+﻿<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-toolbar btn-success float-right" data-ng-click="showForm()">Nuevo</button>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th data-ng-show="false">Id</th>
+                    <th>Nombre</th>
+                    <th>Genero</th>
+                    <th>Fecha de nacimiento</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="item in list">
+                    <td data-ng-show="false">Id</td>
+                    <td>{{item.Name}} {{item.LastNameFather}} {{item.LastNameMother}}</td>
+                    <td>{{item.Sex}}</td>
+                    <td>{{item.Birth | date}}</td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary" data-ng-click="edit()">Editar</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" data-ng-click="delete()">Editar</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

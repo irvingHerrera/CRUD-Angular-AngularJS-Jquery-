@@ -1,1 +1,65 @@
-﻿
+﻿<form class="frm">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control"
+                               id="name"
+                               data-ng-model="model.Name"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="LastNameFather">Apellido paterno</label>
+                        <input type="text" class="form-control"
+                               id="LastNameFather"
+                               data-ng-model="model.LastNameFather"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="LastNameMother">Apellido Materno</label>
+                        <input type="text" class="form-control"
+                               id="LastNameMother"
+                               data-ng-model="model.LastNameMother"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Sex">Genero</label>
+                        <select class="form-control"
+                                data-ng-required="true"
+                                data-ng-model="model.Sex">
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Birth">Fecha de nacimiento</label>
+                        <input type="date" class="form-control"
+                               id="Birth"
+                               data-ng-model="model.Birth"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-success float-right" data-ng-click="save(model)">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</form>

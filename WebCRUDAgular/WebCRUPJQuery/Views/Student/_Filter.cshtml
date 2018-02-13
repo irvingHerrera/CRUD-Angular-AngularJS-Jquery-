@@ -1,1 +1,21 @@
-﻿
+﻿<form class="frmFilter" novalidate>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="filterName">Nombre</label>
+                <input type="text" class="form-control"
+                       id="filterName">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="filterLastName">Apellidos</label>
+                <input type="text" class="form-control"
+                       id="filterLastName">
+            </div>
+        </div>
+        <div class="col-md-4" style="padding-top:30px;">
+            <button class="btn btn-success" data-ng-click="search()">Buscar</button>
+        </div>
+    </div>
+</form>

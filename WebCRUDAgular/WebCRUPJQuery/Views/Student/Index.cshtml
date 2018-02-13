@@ -1,4 +1,6 @@
-﻿<section class="h-100 pt-default">
+﻿
+
+<section style="padding-top:30px;">
     <div class="row">
         <div class="col-lg-12">
             @{Html.RenderPartial("_Filter");}
@@ -6,12 +8,65 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            @{Html.RenderPartial("_Table");}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            @{Html.RenderPartial("_Form");}
+            <div id="table">
+                @{Html.RenderPartial("_Table", new List<WebCRUD.Core.ViewModels.StudentViewModel>());};
+            </div>
+            
         </div>
     </div>
 </section>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+
+            
+
+            callTable();
+
+            
+
+        });
+
+        var callTable = () => {
+            $.ajax({
+                url: '/Student/_Table',
+                success: function (data) {
+                    $("#table").html(data);
+                },
+                statusCode: {
+                    404: function (content) { alert('cannot find resource'); },
+                    500: function (content) { alert('internal server error'); }
+                },
+                error: function (req, status, errorObj) {
+                    // handle status === "timeout"
+                    // handle other errors
+                }
+            });
+        };
+
+        var Delete = (id) => {
+            $.ajax({
+                url: '/Student/Delete',
+                data: { 'id': id },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data == 1)
+                        callTable();
+                },
+                statusCode: {
+                    404: function (content) { alert('cannot find resource'); },
+                    500: function (content) { alert('internal server error'); }
+                },
+                error: function (req, status, errorObj) {
+                    // handle status === "timeout"
+                    // handle other errors
+                }
+            });
+        };
+    </script>
+}

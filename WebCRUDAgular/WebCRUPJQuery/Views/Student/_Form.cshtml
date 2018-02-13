@@ -1,1 +1,90 @@
-﻿
+﻿<div class="row" style="margin-top:30px;">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control"
+                                   id="Name">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="LastNameMother">Apellidos</label>
+                            <input type="text" class="form-control"
+                                   id="LastNameMother">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Sex">Genero</label>
+                            <select class="form-control" id="select">
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Birth">Fecha de nacimiento</label>
+                            <input type="date" class="form-control"
+                                   id="Birth">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-success float-right" id="btnForm">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+<script>
+        $(document).ready(function () {
+
+            $("#btnForm").click(() => {
+
+
+                var model = {
+                    'Name': $("#Name").val(),
+                    'LastName': $("#LastNameMother").val(),
+                    'EnrollmentDate': $("#Birth").val()
+                };
+
+                console.log("formulario", model);
+
+                $.ajax({
+                    url: '/Student/AddStudent',
+                    data: model,
+                    type: "POST",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if(data == 1)
+                        window.location.href = '@Url.Action("Index", "Student")';
+                    },
+                    statusCode: {
+                        404: function (content) { alert('cannot find resource'); },
+                        500: function (content) { alert('internal server error'); }
+                    },
+                    error: function (req, status, errorObj) {
+                        // handle status === "timeout"
+                        // handle other errors
+                    }
+                });
+
+            });
+
+
+
+        });
+</script>
+}

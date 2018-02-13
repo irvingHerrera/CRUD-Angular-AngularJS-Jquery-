@@ -1,1 +1,49 @@
-﻿
+﻿@using WebCRUD.Core.ViewModels
+@model List<StudentViewModel>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-toolbar btn-success float-right" 
+           href="@Url.Action("_Form", "Student")" >Nuevo</a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th style="display:none">Id</th>
+                    <th>Nombre</th>
+                    <th>Genero</th>
+                    <th>Fecha de nacimiento</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td style="display:none">@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.LastName</td>
+                    <td>@item.EnrollmentDate</td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary" id="btnEdit">Editar</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" id="btnDelete" onclick="Delete(@item.Id)">Eliminar</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
